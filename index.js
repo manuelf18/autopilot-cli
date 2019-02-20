@@ -58,6 +58,10 @@ module.exports = () => {
       require('./cmd/version')(args)
       break
 
+    case 'test':
+      require('./cmd/test')(args);
+      break;
+
     case 'help':
       require('./cmd/help')(args)
       break

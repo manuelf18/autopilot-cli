@@ -1,5 +1,5 @@
 const path = require('path');
-const ora = require('ora')
+const ora = require('ora');
 const ta = require('../lib/twilio-assistant');
 
 module.exports = async (args) => {
@@ -17,7 +17,6 @@ module.exports = async (args) => {
 
       let url = 'https://raw.githubusercontent.com/twilio/autopilot-templates/master/Assistants/templates.json';
       
-
       clonedAssistant = await ta.clone(url);
 
       schema = path.join(clonedAssistant, 'schema.json');
@@ -26,15 +25,14 @@ module.exports = async (args) => {
     spinner.start('Creating assistant...');
     let fullPath = `${path.resolve()}/${schema}`
 
-    const assistant = await ta.createAssistantFully(fullPath,profile)
+    const assistant = await ta.createAssistantFully(fullPath, profile);
 
-    spinner.stop()   
+    spinner.stop();
 
     console.log(`Assistant "${assistant.uniqueName}" was created`);
     
   } catch (err) {
-    spinner.stop()
-
-    console.error(`ERROR: ${err}`)
+      spinner.stop();
+      console.error(`ERROR: ${err}`)
   }
 }

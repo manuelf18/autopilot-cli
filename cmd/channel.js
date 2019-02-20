@@ -21,19 +21,21 @@ module.exports = async (args) => {
   const assistantSid = args.assistant,
         text = args.text,
         channel = args.channel,
+        local = args.local || false,
         profile = args.credentials || "default";
+
  
   const spinner = ora().start('Sending text to channel...')
 
   try {
 
-    const channelResponse = await ta.customChannel(assistantSid, channel, text, profile);
+    const channelResponse = await ta.customChannel(assistantSid, channel, text, profile, local);
 
 
     spinner.stop()   
 
     console.log(`Channel response\n`)
-    console.log(prettyJSONStringify(channelResponse))
+    console.log(prettyJSONStringify(channelResponse));
     
   } catch (err) {
     spinner.stop()
