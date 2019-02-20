@@ -27,6 +27,8 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
+    "csv-parse": "^4.3.3",
+    "express": "^4.16.4",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.2",
     "lodash": "^4.17.11",
@@ -39,8 +41,7 @@
     "simple-git": "^1.107.0",
     "twilio": "^3.27.1",
     "underscore": "^1.9.1",
-    "zip-unzip-promise": "^1.1.0",
-    "csv-parse": "^4.3.3"
+    "zip-unzip-promise": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

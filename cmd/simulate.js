@@ -14,24 +14,32 @@ module.exports = async (args) => {
     return
   }
 
+  if(args.hasOwnProperty('local') && !args.hasOwnProperty('schema')){
+    console.log(`the '--schema' argument is required when using the --local argument`);
+    return;
+  }
+
   const assistantSid = args.assistant,
         text = args.text,
-        local = args.local || false,
+        local = (args.local !== undefined) ? {config: args.local, schema: args.schema} : false,
         channel = 'cli',
         profile = args.credentials || "default";
 
- 
-  const spinner = ora().start('Sending text to channel...')
+  
+  let startText = (local === false) ? 'Sending text to channel...' : 'Sending local text to channel...';
+  const spinner = ora().start(startText);
 
   try {
 
     const channelResponse = await ta.customChannel(assistantSid, channel, text, profile, local);
 
-
     spinner.stop()   
 
     console.log(`Channel response\n`)
     console.log(prettyJSONStringify(channelResponse));
+
+    if (local !== false)
+      process.exit(); // we have to kill the process since otherwise express would keep it alive
     
   } catch (err) {
     spinner.stop()
