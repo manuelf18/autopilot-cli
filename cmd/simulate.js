@@ -21,7 +21,7 @@ module.exports = async (args) => {
 
   const assistantSid = args.assistant,
         text = args.text,
-        local = (args.local !== undefined) ? {config: args.local, schema: args.schema} : false,
+        local = (args.local === undefined) ? false : {config: args.local, schema: args.schema, ngrokAuth: args.ngrok},
         channel = 'cli',
         profile = args.credentials || "default";
 
