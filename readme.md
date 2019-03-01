@@ -24,7 +24,7 @@ Usage:
   ta delete --assistant <assistant-sid> [--credentials <name>]
   ta export --assistant <assistant-sid> [--credentials <name>]
   ta import --dfbackup <dialogflow-backup-zip-file> --dfagent <dialogflow-agent-name> [--credentials <name>]
-  ta simulate --assistant <assistant-sid> --text <user-text-input> [--credentials <name>]
+  ta simulate --assistant <assistant-sid> --text <user-text-input> [--credentials <name>][--local <config-file> --schema <schema-file> --ngrok <ngrok-key>]
   ta field --assistant <assistant-sid> --field <field-type-sid> --csv <csv-file> [--credentials <name>]
 
 Options:
